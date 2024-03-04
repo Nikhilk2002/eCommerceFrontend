@@ -1,63 +1,65 @@
-*{
-    box-sizing: content-box;
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.main{
-    width: 100%;
-    height: 1000px;
-    background-color: #F1F1F2;
-    padding: 45px 0px;
-    margin-top: 5px;
+
+.add-page {
+  text-align: center;
+  width: 100%;
+  height: 590px; 
+  background-image: url('https://rukminim2.flixcart.com/image/612/612/xif0q/frame/x/3/i/50-na-ag2811gt-peter-jones-original-imagu5vdrgugwfwt.jpeg?q=70');
+  background-size: cover;
+  background-position: center; 
+  padding: 25px 0;
+  margin-top: 5px;
 }
-.product-card{
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0);
-    transition: all 0.5s;
-    overflow: hidden;
-    width: 300px;
-    float: left;
-    margin-left: 30px;
-    margin-bottom: 40px;
-    
+
+.ad-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  margin-top: 30px;
 }
-.product-image{
-    width: 100%;
-    height: 200px;
-    background-size: cover;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    margin-left: 2px;
+
+.ad-image {
+  width: 200px; 
+  height: 200px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  margin-bottom: 70px;
 }
-.product-info{
-    padding: 20px;
+
+
+.ad-details {
+  text-align: center; 
 }
-.product-title{
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+
+.ad-details h2 {
+  font-size: 48px; 
+  margin-top: 30px;
+  margin-bottom: 20px; 
+  color:#05013f; 
 }
-.product-description{
-    color: #555;
-    margin-bottom: 10px;
-    font-size: small;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
+.ad-details p {
+  font-size: 20px; 
+  margin-bottom: 30px; 
+  color:#05013f; 
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.product-price{
-    color: #d71a1a;
-    font-size: 1.25rem;
-    font-weight: bold;
+
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 15px 30px; 
+  font-size: 18px; 
+  cursor: pointer;
+  border-radius: 8px; 
+  transition: back
 }
-.product-button{
-    background-color: #d71a1a;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 80em;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition:all 0,3s;
+.btn-link{
+  text-decoration: none;
+  color: #F1F1F2;
 }

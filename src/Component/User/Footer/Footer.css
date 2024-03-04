@@ -1,9 +1,7 @@
 .footermain {
-  background-color:#333;
-  color:#DDD0C8;
-  padding: 20px;
-  /* width: 1349px; */
-  
+  background-color:rgb(56, 55, 55);
+  padding: 10px;
+  color: #DDD0C8;
 }
 
 .footermain footer {
@@ -14,10 +12,14 @@
 .footer-item {
   max-width: 500px;
 }
-.footer-item p {
+.about-discription{
+  text-align: justify; 
+  text-justify: inter-word; 
+  width: 400px; 
   font-size: 16px; 
   line-height: 1.6; 
 }
+
 
 .footer-item h2 {
   font-size: 1.2em;
@@ -32,6 +34,7 @@
 
 .footer-item ul li {
   margin-bottom: 5px;
+  text-align: start;
 }
 
 .footer-item ul li a {

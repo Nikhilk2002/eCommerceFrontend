@@ -4,9 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #FDF6F6;
+  /* background-color: #FDF6F6; */
+  background-color:#F1F1F2; 
   color: #31473A;
   padding: 0 20px;
+  margin-bottom: 2px;
 }
 
 .logoContainer {
@@ -27,6 +29,7 @@
 
 .navLinks {
   display: flex;
+  color:#05013f; 
 }
 
 .navLinks a {
