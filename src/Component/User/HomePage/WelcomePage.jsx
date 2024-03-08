@@ -1,5 +1,6 @@
 import React from 'react'
 import './WelcomePage.css'
+import {Link} from 'react-router-dom'
 
 function WelcomePage() {
   return (
@@ -8,8 +9,8 @@ function WelcomePage() {
         <br/>
         <h4>Choose The best For your eyes and Face</h4>
         <div className="login-sign">
-          <a href="/login" className='login'>Login</a>
-          <a href="/signup" className='signup'>Sign Up</a>
+          <Link to="/login" className='login'>Login</Link>
+          <Link to="/signup" className='login'>Signup</Link>
         </div>
 
     </div>

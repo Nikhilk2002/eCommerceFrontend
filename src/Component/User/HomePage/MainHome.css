@@ -59,6 +59,10 @@
   border-radius: 8px; 
   transition: back
 }
+#shop-btn{
+  text-decoration: none;
+  color: #fff;
+}
 .btn-link{
   text-decoration: none;
   color: #F1F1F2;

@@ -11,11 +11,11 @@
 }
 .signup-Container{
     width: 380px;
-    height: 440px;
-    background-color:#faa9a9;
+    height: 520px;
+    background-color:#d9dfd9;
     margin: 20px auto;
     padding-top: 20px;
-    border: 1px solid #faa9a9;
+    border: 1px solid #d9dfd9;
     border-radius: 0.5rem;
 }
 h2{
@@ -39,3 +39,10 @@ h2{
     background-color: rgb(218, 9, 9);
     color: white;
 }
+
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 5px;
+  }

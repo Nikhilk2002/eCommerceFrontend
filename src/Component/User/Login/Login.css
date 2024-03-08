@@ -13,8 +13,8 @@
     width: 380px;
     height: 400px;
     margin: 0 auto;
-    background-color: #faa9a9;
-    border: 1px solid black;
+    background-color: #d9dfd9;
+    border: 1px solid #d9dfd9;
     border-radius: 0.5rem;
 }
 h2{
@@ -72,3 +72,12 @@ h2{
     padding: 5px 10px;
     
 }
+#click-here{
+    text-decoration: none;
+    color:blue;
+}
+.error {
+    color: red;
+    font-size: 12px;
+  }
+  

@@ -2,7 +2,9 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AdminHome from '../Pages/Admin/AdminHome'
 import AdminLogin from '../Pages/Admin/AdminLogin'
-import EditProduct from '../Pages/Admin/EditProduct'
+import USersList from '../Pages/Admin/USersList'
+import OrdersList from '../Pages/Admin/OrdersList'
+import ProductsList from '../Pages/Admin/ProductsList'
 
 function AdminRouter() {
   return (
@@ -10,7 +12,9 @@ function AdminRouter() {
         <Routes>
         <Route path='/' element={<AdminHome/>}/>
         <Route path='/login' element={<AdminLogin/>}/>
-        <Route path='/edit' element={<EditProduct/>}/>
+        <Route path='/order' element={<OrdersList/>}/>
+        <Route path='/user' element={<USersList/>}/>
+        <Route path='/product' element={<ProductsList/>}/>
         </Routes>
     </div>
   )

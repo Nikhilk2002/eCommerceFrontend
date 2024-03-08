@@ -1,0 +1,36 @@
+.adminProduct {
+    margin: 20px;
+  }
+  
+  .productListTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .productListTable th, .productListTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .productListTable th {
+    background-color: #f2f2f2;
+  }
+  
+  .productListTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .productListTable tbody tr:hover {
+    background-color: #ddd;
+  }
+  .product-btn{
+    width: 70px;
+    height: 20px;
+    margin-left: 20px;
+    background-color: red;
+    border: 1px none;
+    border-radius: 0.2rem;
+    padding: 5px;
+  }
+  

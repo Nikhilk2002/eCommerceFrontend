@@ -1,0 +1,47 @@
+
+.adminHome {
+    background-color: #f1f1f2;
+    width: 100%;
+    height: 100vh; 
+    font-family: Arial, sans-serif;
+    color: #333; 
+  }
+  
+  .userListTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+  
+  .userListTable th,
+  .userListTable td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .userListTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .userListTable td {
+    color: #555;
+  }
+  .block-btn {
+    width: 70px;
+    height: 20px;
+    margin-left: 20px;
+    background-color: red;
+    border: 1px none;
+    border-radius: 0.2rem;
+    padding: 5px;
+}
+/* 
+#unblock-btn{
+  background-color: greenyellow;
+} */
