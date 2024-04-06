@@ -5,9 +5,7 @@ function ProductList() {
   return (
     <div className='adminProduct'>
         <h1>Product List</h1>
-        {/* <h2>Product Data</h2> */}
         
-
         <table className='productListTable'>
           <thead>
             <tr>
