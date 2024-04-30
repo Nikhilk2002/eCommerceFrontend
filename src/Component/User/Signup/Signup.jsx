@@ -43,10 +43,6 @@ function Signup() {
   });
 
 
-  // const goToLogin = () => {
-  //   navigate("/login")
-  // }
-
   return (
     <div className='signup-div'>
       <div className="signup-Container">
@@ -71,7 +67,7 @@ function Signup() {
           {/* <button type="submit" className="input-text" id="submit-btn" disabled={isSubmitting}>
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </button> */}
-          <button type="submit" id='submit-btn'>Submit</button>
+          <button type="submit" id='submit-btn' className='input-text'>Submit</button>
 
         </form>
       </div>

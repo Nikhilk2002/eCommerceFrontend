@@ -41,7 +41,7 @@ function Login() {
   });
 
   return (
-    <div className="container">
+    <div className="login-page">
       <div className="loginContainer">
         <h2>Login</h2>
         <form onSubmit={formik.handleSubmit}>

@@ -1,65 +1,72 @@
-import React from 'react';
-import './UserList.css';
-
+import React, { useEffect, useState } from "react";
+import "./UserList.css";
+import { userList } from "../../../Services/AdminApi";
 
 function UserList() {
+  const [users, setUsers] = useState([]);
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  const fetchData = async () => {
+    const {data} = await userList();
+    if(data.status) {
+      setUsers(data.UserList);
+      setTotalUsers(data.UserList.length);
+    } else {
+      console.log("error");
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
   return (
     <>
-      <div className='adminHome'>
+      <div className="adminHome">
         <h1>User List</h1>
-        <table className='userListTable'>
+        <h3>
+          Total Users: {totalUsers}
+        </h3>
+        <div className="userListTable">
+        <table className="userListTable">
           <thead>
             <tr>
-              <th>User ID</th>
               <th>Username</th>
               <th>Email</th>
-              <th>Remove</th>
-
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Nikhil</td>
-              <td>nikhil1234@gmail.com</td>
-              <td><button className='block-btn'>Block</button></td>
-
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Afsal</td>
-              <td>afsaltirur@gmail.com</td>
-              <td><button className='block-btn'>Block</button></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Saneesh</td>
-              <td>Saneeshvalanchery@gmail.com</td>
-              <td><button className='block-btn'>Block</button></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Sreejith</td>
-              <td>sreejithtech@gmail.com</td>
-              <td><button className='block-btn'>Block</button></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Nikhitha</td>
-              <td>nikhithatechy@gmail.com</td>
-              <td><button className='block-btn'>Block</button></td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>vaishnima</td>
-              <td>vaishnimatechy@gmail.com</td>
-              <td><button className='block-btn'>Block</button></td>
-            </tr>
+            {users.map((user) => (
+              <tr key={user.name}>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>
+                  {user.blockStatus ? (
+                    <button
+                      className="block-btn"
+                      
+                    >
+                      Unblock
+                    </button>
+                  ) : (
+                    <button
+                      className="block-btn "
+                   
+                    >
+                      Block
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
+        </div>
       </div>
     </>
-  )
+  );
 }
 
-export default UserList
+export default UserList;
