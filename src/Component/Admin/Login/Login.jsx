@@ -57,11 +57,12 @@ function Login() {
               <div>
                
                
-                <div className="mail">
+                <div className="admin-mail">
                  
                   <input
                     type="email"
                     name="email"
+                    className="pswd-login"
                    
                    
                     placeholder="Enter your email"
@@ -79,11 +80,12 @@ function Login() {
                   )}
                 </div>
                 <br />
-                <div className="pswd">
+                <div className="admin-mail">
                   
                   <input
                     type="password"
                     name="password"
+                    className="pswd-login"
                   
                    
                     placeholder="Enter your password"
@@ -105,6 +107,7 @@ function Login() {
                   <button type="submit" id="submit-btn">
                     Login
                   </button>
+                
                 </div>
              </div>
             

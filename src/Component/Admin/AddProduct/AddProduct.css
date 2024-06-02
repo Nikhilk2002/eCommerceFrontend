@@ -1,0 +1,67 @@
+.add-product {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); 
+}
+
+
+.add-product form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; 
+}
+
+
+.add-product label {
+  font-weight: 600;
+  color: #555;
+}
+
+.add-product input,
+.add-product textarea,
+.add-product select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.add-product input:focus,
+.add-product textarea:focus,
+.add-product select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.add-product .error {
+  color: #ff0000;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+.add-product button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-product button:hover {
+  background-color: #0056b3;
+}
+
+.add-product textarea {
+  height: 80px;
+  resize: vertical; 
+}

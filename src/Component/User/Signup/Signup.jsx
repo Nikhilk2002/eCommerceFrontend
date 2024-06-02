@@ -64,10 +64,8 @@ function Signup() {
             <input type="password" name="confirmPassword" value={formik.values.confirmPassword} onChange={formik.handleChange} placeholder="Confirm your password" className="input-text" />
             {formik.errors.confirmPassword && <div className="error-message">{formik.errors.confirmPassword}</div>}
           </div>
-          {/* <button type="submit" className="input-text" id="submit-btn" disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting...' : 'Submit'}
-          </button> */}
-          <button type="submit" id='submit-btn' className='input-text'>Submit</button>
+          
+          <button type="submit" id='signup-btn' className='input-text'>Submit</button>
 
         </form>
       </div>

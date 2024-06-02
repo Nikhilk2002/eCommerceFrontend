@@ -17,9 +17,10 @@ function Header() {
 
       </div>
       <div className='searchBar'>
-        <input type="text" placeholder="Search..." />
-        <button type="submit">Search</button>
+        {/* <input type="text" placeholder="Search..." />
+        <button type="submit">Search</button> */}
       </div>
+
     </div>
   );
 }

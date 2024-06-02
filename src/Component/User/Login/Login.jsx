@@ -69,7 +69,7 @@ function Login() {
             />
             {formik.errors.password && <div className="error">{formik.errors.password}</div>}
           </div>
-          <button type="submit" className="pswd" id="submit-btn">
+          <button type="submit" className="pswd" id="user-login-btn">
             Continue
           </button>
         </form>

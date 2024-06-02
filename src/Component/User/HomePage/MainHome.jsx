@@ -11,7 +11,7 @@ function MainHome() {
       <div className="ad-details">
         <h2>Discover Our Latest Collection</h2>
         <p>Upgrade your style with our trendy sunglasses!</p>
-        <button className="btn"><Link to="/shop" id='shop-btn'>Shop Now</Link></button>
+        <button className="home-btn"><Link to="/shop" id='shop-btn'>Shop Now</Link></button>
       </div>
     </div>
   </div>
