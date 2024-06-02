@@ -16,3 +16,9 @@ export const userList =()=>{
   return adminInstance.get("/user")
 };
 
+
+
+
+export const removeUser = (userId) => {
+  return adminInstance.delete(`/user/${userId}`);
+};
