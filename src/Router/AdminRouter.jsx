@@ -5,7 +5,7 @@ import AdminLogin from '../Pages/Admin/AdminLogin'
 import USersList from '../Pages/Admin/USersList'
 import OrdersList from '../Pages/Admin/OrdersList'
 import ProductsList from '../Pages/Admin/ProductsList'
-import Add_product from '../Pages/Admin/Add_product'
+import AddProduct from '../Pages/Admin/AddProduct'
 
 function AdminRouter() {
   return (
@@ -15,7 +15,7 @@ function AdminRouter() {
         <Route path='/login' element={<AdminLogin/>}/>
         <Route path='/order' element={<OrdersList/>}/>
         <Route path='/user' element={<USersList/>}/>
-        <Route path='/add' element={<Add_product/>}/>
+        <Route path='/add' element={<AddProduct/>}/>
         <Route path='/product' element={<ProductsList/>}/>
         </Routes>
     </div>

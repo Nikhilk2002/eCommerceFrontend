@@ -17,8 +17,15 @@ export const userList =()=>{
 };
 
 
+export const productList = () => {
+  return adminInstance.get('/product');
+};
 
-
+//DELETE Methods
 export const removeUser = (userId) => {
   return adminInstance.delete(`/user/${userId}`);
 };
+
+export const deleteProduct=(productId)=>{
+  return adminInstance.delete(`/product/${productId}`)
+}

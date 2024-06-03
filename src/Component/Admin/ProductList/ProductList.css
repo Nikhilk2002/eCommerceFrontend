@@ -1,36 +1,78 @@
-.adminProduct {
-    margin: 20px;
+.admin-product {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-product__title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+  color: #333;
+}
+
+.product-list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-list-table th,
+.product-list-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.product-list-table th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+.product-list-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.product-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.product-btn {
+  padding: 8px 12px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.product-btn--edit {
+  background-color: #4caf50;
+  color: white;
+}
+
+.product-btn--delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.product-btn--disable {
+  background-color: #ff9800;
+  color: white;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .product-list-table th,
+  .product-list-table td {
+    font-size: 14px;
   }
-  
-  .productListTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .productListTable th, .productListTable td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .productListTable th {
-    background-color: #f2f2f2;
-  }
-  
-  .productListTable tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .productListTable tbody tr:hover {
-    background-color: #ddd;
-  }
-  .product-btn{
-    width: 70px;
-    height: 20px;
-    margin-left: 20px;
-    background-color: red;
-    border: 1px none;
-    border-radius: 0.2rem;
-    padding: 5px;
-  }
-  
+}
