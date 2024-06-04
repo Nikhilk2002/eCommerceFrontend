@@ -1,51 +1,55 @@
-.footermain {
-  background-color:rgb(56, 55, 55);
-  padding: 10px;
-  color: #DDD0C8;
+/* Footer Styles */
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
 }
 
-.footermain footer {
-  display: flex;
-  justify-content: space-around;
+.footer h2 {
+  color: #009B4D;
+  font-size: 1.5em;
+  margin-bottom: 15px;
 }
 
-.footer-item {
-  max-width: 500px;
-}
-.about-discription{
-  text-align: justify; 
-  text-justify: inter-word; 
-  width: 400px; 
-  font-size: 16px; 
-  line-height: 1.6; 
-}
-
-
-.footer-item h2 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  color:#009B4D;
-}
-
-.footer-item ul {
+.footer-links {
   list-style: none;
   padding: 0;
 }
 
-.footer-item ul li {
-  margin-bottom: 5px;
-  text-align: start;
+.footer-links li {
+  margin-bottom: 10px;
 }
 
-.footer-item ul li a {
-  color:#DDD0C8;
+.footer-links li a {
+  color: #fff;
   text-decoration: none;
 }
 
-.footer-item ul li a:hover {
+.footer-links li a:hover {
   text-decoration: underline;
 }
 
-.footer-item ul li i {
-  margin-right: 5px;
+.about-description {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.footer-contact {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-contact li {
+  margin-bottom: 10px;
+}
+
+.footer-contact li i {
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer h2 {
+    font-size: 1.2em;
+  }
 }

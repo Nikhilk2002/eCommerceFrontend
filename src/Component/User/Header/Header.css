@@ -1,14 +1,6 @@
 .mainHead {
- 
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* background-color: #FDF6F6; */
-  background-color:#F1F1F2; 
-  color: #31473A;
-  padding: 0 20px;
-  margin-bottom: 2px;
+  background-color: #f8f9fa;
+  padding: 20px;
 }
 
 .logoContainer {
@@ -16,43 +8,28 @@
   align-items: center;
 }
 
-.logoName {
-  margin-left: 10px;
-  font-weight: 700;
+.logoImage {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
 }
 
-.logoImage {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%; 
+.logoName {
+  margin: 0;
+  font-size: 24px;
 }
 
 .navLinks {
-  display: flex;
-  color:#05013f; 
+  text-align: right;
 }
 
-.navLinks a {
-  margin-right: 10px;
-  text-decoration: none;
-  font-weight: bolder;
+.searchBar {
+  margin-top: 20px;
+  text-align: center;
 }
 
-.searchBar input[type="text"] {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.searchBar button {
-  padding: 5px 20px;
-  background-color: #31473A;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.searchBar button:hover {
-  background-color: #537c68;
+@media (max-width: 768px) {
+  .navLinks {
+    text-align: center;
+  }
 }
