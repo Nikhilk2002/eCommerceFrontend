@@ -29,3 +29,15 @@ export const removeUser = (userId) => {
 export const deleteProduct=(productId)=>{
   return adminInstance.delete(`/product/${productId}`)
 }
+
+
+//PUT Method
+
+export const editProduct=(productId)=>{
+  return adminInstance.put(`/edit/${productId}`)
+}
+
+// Fetch product details by ID
+export const getProductById = (productId) => {
+  return adminInstance.get(`/edit/${productId}`);
+};

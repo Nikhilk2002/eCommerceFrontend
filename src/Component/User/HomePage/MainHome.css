@@ -1,70 +1,70 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.main-home {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.welcome {
+  margin-bottom: 2rem;
+}
+
+.welcome-head {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.login-sign .btn {
+  min-width: 100px;
 }
 
 .add-page {
-  text-align: center;
-  width: 100%;
-  height: 590px; 
-  background-image: url('https://rukminim2.flixcart.com/image/612/612/xif0q/frame/x/3/i/50-na-ag2811gt-peter-jones-original-imagu5vdrgugwfwt.jpeg?q=70');
-  background-size: cover;
-  background-position: center; 
-  padding: 25px 0;
-  margin-top: 5px;
-}
-
-.ad-container {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  margin-top: 30px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .ad-image {
-  width: 200px; 
-  height: 200px; 
-  border-radius: 50%; 
-  object-fit: cover; 
-  margin-bottom: 70px;
+  max-width: 100%;
+  height: auto;
 }
 
-
 .ad-details {
-  text-align: center; 
+  text-align: center;
 }
 
 .ad-details h2 {
-  font-size: 48px; 
-  margin-top: 30px;
-  margin-bottom: 20px; 
-  color:#05013f; 
+  margin-bottom: 1rem;
 }
 
 .ad-details p {
-  font-size: 20px; 
-  margin-bottom: 30px; 
-  color:#05013f; 
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-bottom: 1.5rem;
 }
 
 .home-btn {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 15px 30px; 
-  font-size: 18px; 
-  border-radius: 8px; 
-  transition: back
-}
-#shop-btn{
   text-decoration: none;
   color: #fff;
-  
-  
 }
-.btn-link{
-  text-decoration: none;
-  color: #F1F1F2;
+
+@media (max-width: 768px) {
+  .welcome-head {
+    font-size: 2rem;
+  }
+
+  .login-sign .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .ad-container {
+    padding: 1rem;
+  }
+
+  .ad-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .ad-details p {
+    font-size: 1rem;
+  }
 }

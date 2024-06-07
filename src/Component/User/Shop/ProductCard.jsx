@@ -5,7 +5,7 @@ import './ProductCard.css';
 function ProductCard({ product }) {
   return (
     <Col xs={12} sm={6} md={4} lg={3} xl={3}> 
-      <Card className="product-card">
+      <Card className="product-card shadow p-3 mb-2">
         <Card.Img variant="top" src={product.image} alt={product.prod_name} className="product-image" />
         <Card.Body>
           <Card.Title className="product-name">{product.prod_name}</Card.Title>

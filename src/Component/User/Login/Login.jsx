@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Login.css"
+import "./Login.css";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
@@ -35,49 +35,46 @@ function Login() {
           toast.error(data.message, { position: "top-right" });
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
   });
 
   return (
     <div className="login-page">
-      <div className="loginContainer">
-        <h2>Login</h2>
+      <div className="loginContainer card shadow p-3 mb-2">
+        <h2 className="text-center mb-4">Login</h2>
         <form onSubmit={formik.handleSubmit}>
-          <div>
+          <div className="form-group">
             <input
               type="email"
               id="email"
               name="email"
               placeholder="Email address"
-              className="mail"
+              className="form-control"
               value={formik.values.email}
               onChange={formik.handleChange}
             />
             {formik.errors.email && <div className="error">{formik.errors.email}</div>}
           </div>
-          <div>
+          <div className="form-group">
             <input
               type="password"
               id="password"
               name="password"
               placeholder="Password"
-              className="pswd"
+              className="form-control"
               value={formik.values.password}
               onChange={formik.handleChange}
             />
             {formik.errors.password && <div className="error">{formik.errors.password}</div>}
           </div>
-          <button type="submit" className="pswd" id="user-login-btn">
+          <button type="submit" className="btn btn-primary" id="user-login-btn">
             Continue
           </button>
         </form>
-        <p className="create-account">
-          Create an account?
-          <Link to="/signup" id="click-here">
-            Click here
-          </Link>
+        <p className="text-center mt-3" id="create-account">
+          Create an account? <Link to="/signup" id="click-here">Click here</Link>
         </p>
       </div>
     </div>

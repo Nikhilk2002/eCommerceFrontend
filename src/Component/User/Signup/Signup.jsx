@@ -15,7 +15,6 @@ function Signup() {
     confirmPassword: "",
   };
 
-
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     email: Yup.string()
@@ -32,7 +31,7 @@ function Signup() {
   const onSubmit = async (values) => {
     console.log(values);
 
-    const {data} = await signup(values);
+    const { data } = await signup(values);
     navigate("/login");
   }
 
@@ -42,31 +41,57 @@ function Signup() {
     onSubmit,
   });
 
-
   return (
-    <div className='signup-div'>
-      <div className="signup-Container">
-        <h2>Signup</h2>
+    <div className="signup-div container">
+      <div className="signup-container card shadow p-3 mb-2">
+        <h2 className="text-center mb-4">Signup</h2>
         <form onSubmit={formik.handleSubmit}>
-          <div>
-            <input type="text" name="name" value={formik.values.name} onChange={formik.handleChange} placeholder="Enter Name" className="input-text" />
-            {formik.errors.name && <div className="error-message">{formik.formik.errors.name}</div>}
+          <div className="form-group">
+            <input
+              type="text"
+              name="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              placeholder="Enter Name"
+              className="form-control"
+            />
+            {formik.errors.name && <div className="text-danger">{formik.errors.name}</div>}
           </div>
-          <div>
-            <input type="email" name="email" value={formik.values.email} onChange={formik.handleChange} placeholder="Enter Email Address" className="input-text" />
-            {formik.errors.email && <div className="error-message">{formik.errors.email}</div>}
+          <div className="form-group">
+            <input
+              type="email"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              placeholder="Enter Email Address"
+              className="form-control"
+            />
+            {formik.errors.email && <div className="text-danger">{formik.errors.email}</div>}
           </div>
-          <div>
-            <input type="password" name="password" value={formik.values.password} onChange={formik.handleChange} placeholder="Set your password" className="input-text" />
-            {formik.errors.password && <div className="error-message">{formik.errors.password}</div>}
+          <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              placeholder="Set your password"
+              className="form-control"
+            />
+            {formik.errors.password && <div className="text-danger">{formik.errors.password}</div>}
           </div>
-          <div>
-            <input type="password" name="confirmPassword" value={formik.values.confirmPassword} onChange={formik.handleChange} placeholder="Confirm your password" className="input-text" />
-            {formik.errors.confirmPassword && <div className="error-message">{formik.errors.confirmPassword}</div>}
+          <div className="form-group">
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formik.values.confirmPassword}
+              onChange={formik.handleChange}
+              placeholder="Confirm your password"
+              className="form-control"
+            />
+            {formik.errors.confirmPassword && <div className="text-danger">{formik.errors.confirmPassword}</div>}
           </div>
-          
-          <button type="submit" id='signup-btn' className='input-text'>Submit</button>
 
+          <button type="submit" className="btn btn-primary btn-block">Submit</button>
         </form>
       </div>
     </div>

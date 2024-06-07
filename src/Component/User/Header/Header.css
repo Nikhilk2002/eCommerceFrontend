@@ -1,6 +1,8 @@
 .mainHead {
   background-color: #f8f9fa;
   padding: 20px;
+  position: relative; 
+  margin-bottom: .3rem;
 }
 
 .logoContainer {
@@ -8,6 +10,13 @@
   align-items: center;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
+.btn {
+  margin-right: 10px;
+}
 .logoImage {
   width: 60px;
   height: 60px;
@@ -27,6 +36,13 @@
   margin-top: 20px;
   text-align: center;
 }
+
+#usr-logout {
+  position: absolute;
+  top: 20px; 
+  right: 20px; 
+}
+
 
 @media (max-width: 768px) {
   .navLinks {

@@ -1,14 +1,11 @@
 import React from 'react'
 import Header from '../../Component/Admin/Header/Header'
-// import WelcomePage from '../../Component/Admin/HomePage/WelcomePage'
-import MainHome from '../../Component/Admin/HomePage/MainHome'
-
+import Login from '../../Component/Admin/Login/Login'
 function AdminHome() {
   return (
     <div>
       <Header/>
-      {/* <WelcomePage/> */}
-      <MainHome/>
+      <Login/>
     </div>
   )
 }

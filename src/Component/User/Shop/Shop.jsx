@@ -12,7 +12,7 @@ function Shop() {
     const fetchProducts = async () => {
       try {
         const data = await shopProduct();
-        console.log(data); // Log the data to check its structure
+        console.log(data);
         if (Array.isArray(data)) {
           setProducts(data);
         } else {
@@ -30,7 +30,7 @@ function Shop() {
 
   return (
     <div className="shop">
-      <h1>Shop</h1>
+     
       {error ? (
         <div className="error-message">{error}</div>
       ) : (

@@ -2,17 +2,20 @@ import React, { useEffect, useState } from 'react';
 import './ProductList.css';
 import { productList, deleteProduct } from '../../../Services/AdminApi';
 import { FaEdit, FaTrashAlt, FaBan } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await productList();
-        console.log('API response:', response); // Log the response
+        console.log('API response:', response);
         const data = response.data;
 
         if (data.status && Array.isArray(data.productList)) {
@@ -21,7 +24,7 @@ function ProductList() {
           throw new Error('Data is not an array');
         }
       } catch (error) {
-        console.error('Error fetching products:', error); // Log the error
+        console.error('Error fetching products:', error); 
         setError(error.message);
       } finally {
         setLoading(false);
@@ -30,27 +33,26 @@ function ProductList() {
 
     fetchProducts();
   }, []);
-
+  
   const handleEdit = (productId) => {
-    // Logic to edit the product
-    console.log('Edit product with ID:', productId);
+    navigate(`/admin/edit/${productId}`); 
   };
-
+  
   const handleDelete = async (productId) => {
     try {
-      // Call API to delete the product
       await deleteProduct(productId);
-      // Update the products state after successful deletion
       setProducts(products.filter(product => product._id !== productId));
+      toast.success('Product deleted successfully');
     } catch (error) {
       console.error('Error deleting product:', error);
-      // Handle error appropriately, e.g., display an error message to the user
+      toast.error('Failed to delete product');
     }
   };
 
   const handleDisable = (productId) => {
     // Logic to disable the product
     console.log('Disable product with ID:', productId);
+    toast.info('Product disabled');
   };
 
   if (loading) return <div className="loading">Loading...</div>;
