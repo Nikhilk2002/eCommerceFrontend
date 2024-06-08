@@ -1,142 +1,173 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { getProductById, editProduct } from '../../../Services/AdminApi';
-import { toast } from 'react-toastify';
+import React, { useEffect, useRef, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { toast } from "react-toastify";
+import { getProductById, editProduct } from "../../../Services/AdminApi";
+import "./EditProduct.css";
 
 const EditProduct = () => {
-  const { productId } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [productData, setProductData] = useState({
-    name: '',
-    description: '',
-    category: '',
-    price: '',
-    imageUrl: ''
-  });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
+  const formikRef = useRef(null); 
 
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const response = await getProductById(productId);
-        console.log('API response:', response); // Debugging: log the response
-
+        const response = await getProductById(id);
         if (response.status === 200 && response.data) {
-          const { productList } = response.data;
-          if (productList && Array.isArray(productList)) {
-            const data = productList.find(p => p._id === productId);
-            if (data) {
-              setProductData({
-                name: data.name,
-                description: data.description,
-                category: data.category,
-                price: data.price,
-                imageUrl: data.imageUrl
-              });
-            } else {
-              throw new Error('Product not found in the response');
-            }
-          } else {
-            throw new Error('productList is not an array or undefined');
-          }
+          formikRef.current.setValues({
+            prod_name: response.data.prod_name,
+            price: response.data.price,
+            description: response.data.description,
+            image: response.data.image,
+            category: response.data.category,
+          });
         } else {
-          throw new Error('Failed to fetch product details');
+          throw new Error("Failed to fetch product details");
         }
       } catch (error) {
-        console.error('Error fetching product details:', error); 
-        setError('Failed to fetch product details');
+        console.error("Error fetching product:", error); 
+        setError("There was an error fetching the product!");
       } finally {
         setLoading(false);
       }
     };
 
     fetchProductDetails();
-  }, [productId]);
+  }, [id]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProductData({ ...productData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!productData.name || !productData.description || !productData.category || !productData.price || !productData.imageUrl) {
-      toast.error('Please fill in all fields');
-      return;
-    }
-    if (isNaN(productData.price) || productData.price <= 0) {
-      toast.error('Please enter a valid price');
-      return;
-    }
-    try {
-      const response = await editProduct(productId, productData);
-      console.log('API response:', response);
-
-      if (response.status === 200) {
-        toast.success('Product updated successfully');
-        navigate('/product');
-      } else {
-        throw new Error('Failed to update product');
+  const formik = useFormik({
+    initialValues: {
+      prod_name: "",
+      price: "",
+      description: "",
+      image: "",
+      category: "",
+    },
+    validationSchema: Yup.object({
+      prod_name: Yup.string().required("Product name is required"),
+      price: Yup.number().required("Price is required").positive("Price must be positive"),
+      description: Yup.string().required("Description is required"),
+      image: Yup.string().required("Image URL is required"),
+      category: Yup.string().required("Category is required"),
+    }),
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const { image, ...editProductData } = values;
+        const response = await editProduct(id, editProductData);
+        if (response.status === 200) {
+          toast.success(response.data.message);
+          navigate("/admin/product"); 
+        } else {
+          throw new Error("Failed to update product");
+        }
+      } catch (error) {
+        console.error("Error updating product:", error);
+        toast.error(error.response?.data?.error || "Something went wrong");
       }
-    } catch (error) {
-      console.error('Error updating product:', error); // Debugging: log the error
-      toast.error('Failed to update product');
-    }
-  };
+    },
+  });
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  formikRef.current = formik;
+
+  useEffect(() => {
+    
+    console.log("Formik values:", formik.values);
+  }, [formik.values]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="edit-product">
-      <h1>Edit Product</h1>
-      <form onSubmit={handleSubmit}>
+      <h2>Edit Product</h2>
+      <form onSubmit={formik.handleSubmit}>
         <div>
-          <label>Name:</label>
+          <label htmlFor="prod_name">Product Name</label>
           <input
+            id="prod_name"
+            name="prod_name"
             type="text"
-            name="name"
-            value={productData.name}
-            onChange={handleChange}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.prod_name}
           />
+          {formik.touched.prod_name && formik.errors.prod_name ? (
+            <div className="error">{formik.errors.prod_name}</div>
+          ) : null}
         </div>
+
         <div>
-          <label>Description:</label>
-          <textarea
-            name="description"
-            value={productData.description}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Category:</label>
+          <label htmlFor="price">Price</label>
           <input
-            type="text"
-            name="category"
-            value={productData.category}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Price:</label>
-          <input
-            type="number"
+            id="price"
             name="price"
-            value={productData.price}
-            onChange={handleChange}
+            type="number"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.price}
           />
+          {formik.touched.price && formik.errors.price ? (
+            <div className="error">{formik.errors.price}</div>
+          ) : null}
         </div>
+
         <div>
-          <label>Image URL:</label>
-          <input
-            type="text"
-            name="imageUrl"
-            value={productData.imageUrl}
-            onChange={handleChange}
-          />
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.description}
+          ></textarea>
+          {formik.touched.description && formik.errors.description ? (
+            <div className="error">{formik.errors.description}</div>
+          ) : null}
         </div>
-        <button type="submit" disabled={loading}>Save</button>
+
+        <div>
+          <label htmlFor="image">Image URL</label>
+          <input
+            id="image"
+            name="image"
+            type="text"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.image}
+          />
+          {formik.touched.image && formik.errors.image ? (
+            <div className="error">{formik.errors.image}</div>
+          ) : null}
+        </div>
+
+        <div>
+          <label htmlFor="category">Category</label>
+          <select
+            id="category"
+            name="category"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.category}
+          >
+            <option value="" label="Select category" />
+            <option value="Adult" label="Adult" />
+            <option value="Child" label="Child" />
+          </select>
+          {formik.touched.category && formik.errors.category ? (
+            <div className="error">{formik.errors.category}</div>
+          ) : null}
+        </div>
+
+        <button type="submit">Save Changes</button>
       </form>
     </div>
   );

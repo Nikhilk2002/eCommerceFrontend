@@ -33,11 +33,12 @@ export const deleteProduct=(productId)=>{
 
 //PUT Method
 
-export const editProduct=(productId)=>{
-  return adminInstance.put(`/edit/${productId}`)
-}
+export const editProduct = (id, productData) => {
+  return adminInstance.put(`/product/${id}`, productData);
+};
 
 // Fetch product details by ID
-export const getProductById = (productId) => {
-  return adminInstance.get(`/edit/${productId}`);
+
+export const getProductById = (id) => {
+  return adminInstance.get(`/product/${id}`);
 };

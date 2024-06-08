@@ -67,6 +67,7 @@ function ProductList() {
           <tr>
             <th>Items</th>
             <th>Product</th>
+            <th>Name</th>
             <th>Description</th>
             <th>Category</th>
             <th>Price</th>
@@ -78,7 +79,8 @@ function ProductList() {
           {products.map((product, index) => (
             <tr key={product._id} className="product-list-row">
               <td>{index + 1}</td>
-              <td><img src={product.imageUrl} alt={`product${index + 1}`} className="product-image" /></td>
+              <td><img src={product.image} alt={`product${index + 1}`} className="product-image" /></td>
+              <td>{product.prod_name}</td>
               <td>{product.description}</td>
               <td>{product.category}</td>
               <td>₹{product.price}</td>
