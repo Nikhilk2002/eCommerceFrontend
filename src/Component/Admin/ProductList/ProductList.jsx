@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './ProductList.css';
 import { productList, deleteProduct } from '../../../Services/AdminApi';
-import { FaEdit, FaTrashAlt, FaBan } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -49,11 +49,7 @@ function ProductList() {
     }
   };
 
-  const handleDisable = (productId) => {
-    // Logic to disable the product
-    console.log('Disable product with ID:', productId);
-    toast.info('Product disabled');
-  };
+  
 
   if (loading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error">Error: {error}</div>;
@@ -87,7 +83,6 @@ function ProductList() {
               <td>
                 <FaEdit className='icon icon--edit' onClick={() => handleEdit(product._id)} />
                 <FaTrashAlt className='icon icon--delete' onClick={() => handleDelete(product._id)} />
-                <FaBan className='icon icon--disable' onClick={() => handleDisable(product._id)} />
               </td>
             </tr>
           ))}

@@ -1,4 +1,3 @@
-// src/pages/Shop/Shop.js
 import React, { useEffect, useState } from 'react';
 import './Shop.css';
 import { shopProduct } from '../../../Services/UserApi';

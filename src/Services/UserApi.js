@@ -25,3 +25,26 @@ export const shopProduct = async () => {
       throw error;
     }
   };
+  export const childProduct = async () => {
+    try {
+      const response = await userInstance.get('http://localhost:8000/child'); 
+      console.log('Full API response data:', response.data);
+      return response.data.shopProduct; 
+    } catch (error) {
+      console.error('Error fetching shop products:', error.response || error.message || error);
+      throw error;
+    }
+  };
+  
+
+ 
+export const adultProduct = async () => {
+  try {
+    const response = await userInstance.get('http://localhost:8000/adult'); 
+    console.log('Full API response data:', response.data);
+    return response.data.shopProduct; 
+  } catch (error) {
+    console.error('Error fetching shop products:', error.response || error.message || error);
+    throw error;
+  }
+};
