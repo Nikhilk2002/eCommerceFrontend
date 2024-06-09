@@ -1,8 +1,12 @@
-.mainHead {
+.container-fluid.mainHead {
   background-color: #f8f9fa;
-  padding: 20px;
-  position: relative; 
-  margin-bottom: .3rem;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+  margin-bottom: 0.3rem;
+}
+
+.container-fluid.mainHead.solid {
+  background-color: #343a40;
 }
 
 .logoContainer {
@@ -10,42 +14,93 @@
   align-items: center;
 }
 
-.ml-auto {
-  margin-left: auto;
-}
-
-.btn {
-  margin-right: 10px;
-}
 .logoImage {
-  width: 60px;
-  height: 60px;
+  height: 50px;
   margin-right: 10px;
 }
 
 .logoName {
-  margin: 0;
   font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
 
 .navLinks {
-  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.searchBar {
-  margin-top: 20px;
-  text-align: center;
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#usr-logout {
-  position: absolute;
-  top: 20px; 
-  right: 20px; 
+.navbar-nav .nav-item .nav-link {
+  color: #333;
+  padding: 10px 20px;
+  font-size: 18px;
 }
 
+.navbar-nav .nav-item .nav-link:hover {
+  color: #007bff;
+}
 
-@media (max-width: 768px) {
-  .navLinks {
-    text-align: center;
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #565e64;
+  border-color: #565e64;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.navbar-collapse {
+  justify-content: center;
+}
+
+.navbar-toggler {
+  margin-left: auto;
+}
+
+#user-sbmt{
+  align-items: flex-end;
+}
+@media (max-width: 767.98px) {
+  .logoName {
+    display: none;
+  }
+  .navbar-nav {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .ml-auto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 }

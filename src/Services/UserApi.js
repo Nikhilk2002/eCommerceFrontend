@@ -48,3 +48,8 @@ export const adultProduct = async () => {
     throw error;
   }
 };
+
+
+export const getProductDetails = (productId) => {
+  return userInstance.get(`/shop/${productId}`);
+};

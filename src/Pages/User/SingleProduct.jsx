@@ -1,8 +1,10 @@
 import React from 'react'
-
+import SingleProducts from '../../Component/User/Shop/SingleProducts'
 function SingleProduct() {
   return (
-    <div>SingleProduct</div>
+    <div>
+     <SingleProducts/>
+    </div>
   )
 }
 

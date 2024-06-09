@@ -14,7 +14,6 @@ function Header() {
       const { user } = await userStatus();
       if (user) {
         setLoggedIn(true);
-        console.log(user + "111111111111");
       } else {
         setLoggedIn(false);
       }
@@ -44,8 +43,6 @@ function Header() {
 
   const handleLogin = () => navigate("/login");
 
-  // const handleSignup = () => navigate("/signup");
-
   return (
     <div className={`container-fluid mainHead ${isSolid ? 'solid' : ''}`}>
       <div className="row align-items-center">
@@ -58,8 +55,8 @@ function Header() {
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse " id="navbarNav">
-              <ul className="navbar-nav justify-content-center">
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <Link to="/" className="nav-link">Home</Link>
                 </li>
@@ -73,14 +70,11 @@ function Header() {
                   <Link to="/child" className="nav-link">Child</Link>
                 </li>
               </ul>
-              <div className="ml-auto">
+              <div className="ml-auto" id='user-sbmt'>
                 {loggedIn ? (
                   <button onClick={handleLogout} className="btn btn-primary">Logout</button>
                 ) : (
-                  <>
-                    <button onClick={handleLogin} className="btn btn-primary mr-2">Login</button>
-                    {/* <button onClick={handleSignup} className="btn btn-secondary">SignUp</button> */}
-                  </>
+                  <button onClick={handleLogin} className="btn btn-primary">Login</button>
                 )}
               </div>
             </div>

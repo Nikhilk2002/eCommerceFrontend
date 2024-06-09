@@ -1,11 +1,11 @@
 import React from 'react'
 import Header from '../../Component/Admin/Header/Header'
-import Login from '../../Component/Admin/Login/Login'
+import UserList from '../../Component/Admin/UserList/UserList'
 function AdminHome() {
   return (
     <div>
       <Header/>
-      <Login/>
+      <UserList/>
     </div>
   )
 }
