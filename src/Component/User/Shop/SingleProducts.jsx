@@ -4,16 +4,20 @@ import { Card, Container, Row, Col, Spinner, Alert } from 'react-bootstrap';
 import { getProductDetails } from '../../../Services/UserApi';  
 
 function SingleProducts() {
-  const { id } = useParams();
+  const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchProductById = async (id) => {
+    const fetchProductById = async (productId) => {
       try {
-        const response = await getProductDetails(id);
-        setProduct(response.data);
+        const response = await getProductDetails(productId);
+        const {status, product, message} = response.data;
+        if(status){
+          setProduct(product);
+
+        }
       } catch (err) {
         console.error('Error fetching product:', err);
         setError('Failed to fetch product');
@@ -22,8 +26,8 @@ function SingleProducts() {
       }
     };
 
-    fetchProductById(id);
-  }, [id]);
+    fetchProductById(productId);
+  }, [productId]);
 
   if (loading) {
     return (
