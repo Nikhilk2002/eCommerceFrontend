@@ -30,6 +30,7 @@
 .navbar-nav {
   display: flex;
   align-items: center;
+  margin-left: 10rem;
 }
 
 .nav-link {
@@ -45,7 +46,7 @@
 .icon-container {
   display: flex;
   align-items: center;
-  margin-left: 38rem;
+  margin-left: 28rem;
 }
 
 .nav-icon {

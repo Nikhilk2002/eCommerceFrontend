@@ -11,14 +11,17 @@ import { useNavigate } from "react-router-dom";
 function Wishlist() {
   const [wishlistData, setWishlistData] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const fetchWishlist = async () => {
     try {
       const response = await getWishlist();
-      setWishlistData(response.data);
+      if (Array.isArray(response.data)) {
+        setWishlistData(response.data);
+      } else {
+        setError("Failed to fetch wishlist");
+      }
     } catch (error) {
       setError("Failed to fetch wishlist");
     } finally {

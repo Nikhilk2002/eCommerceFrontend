@@ -1,19 +1,13 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './ProductCard.css';
-import { AddToWishlist ,checkProductInWishlist} from '../../../Services/UserApi';
-import {toast} from 'react-toastify';
-
-
+import { addToCart } from '../../../Services/UserApi';
+import { AddToWishlist, checkProductInWishlist } from '../../../Services/UserApi';
+import { toast } from 'react-toastify';
 
 function ProductCard({ product }) {
   const navigate = useNavigate();
-
-  const handleImageClick = () => {
-    navigate(`/shop/${product._id}`);
-  };
-  
   const [inWishlist, setInWishlist] = useState(false);
 
   useEffect(() => {
@@ -24,16 +18,29 @@ function ProductCard({ product }) {
           setInWishlist(response.data.inWishlist);
         }
       } catch (error) {
-        console.error("Error checking wishlist status", error);
+        console.error('Error checking wishlist status', error);
       }
     };
 
     checkWishlistStatus();
   }, [product._id]);
 
+  const handleImageClick = () => {
+    navigate(`/shop/${product._id}`);
+  };
 
-  const handleAddToCart =  () => {
-   
+  const handleAddToCart = async () => {
+    try {
+      const response = await addToCart(product._id);
+      if (response.status === 200) {
+        toast.success('Product added to cart');
+      } else {
+        toast.error('Failed to add product to cart');
+      }
+    } catch (error) {
+      console.error('Error adding product to cart', error);
+      toast.error('An error occurred. Please try again.');
+    }
   };
 
   const handleAddToWishlist = async () => {
@@ -42,14 +49,15 @@ function ProductCard({ product }) {
       const response = await AddToWishlist(productId);
 
       if (response.status === 200) {
-        toast.success("Product added to wishlist");
+        toast.success('Product added to wishlist');
         setInWishlist(true);
       } else if (response.status === 201) {
-        toast.success("Product removed from wishlist");
+        toast.success('Product removed from wishlist');
         setInWishlist(false);
       }
     } catch (error) {
-      console.error("Error adding/removing product to wishlist", error);
+      console.error('Error adding/removing product to wishlist', error);
+      toast.error('An error occurred. Please try again.');
     }
   };
 
@@ -70,7 +78,9 @@ function ProductCard({ product }) {
           <Card.Text className="product-price">₹{product.price}</Card.Text>
           <div className="button-group">
             <Button variant="primary" onClick={handleAddToCart}>Add Cart</Button>
-            <Button variant="secondary" onClick={handleAddToWishlist}>Wishlist</Button>
+            <Button variant="secondary" onClick={handleAddToWishlist}>
+              {inWishlist ? 'Remove from Wishlist' : 'Wishlist'}
+            </Button>
           </div>
         </Card.Body>
       </Card>

@@ -68,6 +68,18 @@ export const getCart = () => {
 }
 
 
+// Remove from cart
+export const removeFromCart = (productId) => {
+  return userInstance.delete("/cart/remove", {
+    data: { productId }
+  });
+};
+
+// Edit cart
+export const editCart = (productId, quantity) => {
+  return userInstance.put("/cart/edit", { productId, quantity });
+};
+
 
 //Wishlist
 
