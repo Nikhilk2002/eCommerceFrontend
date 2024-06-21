@@ -82,8 +82,8 @@ function Wishlist() {
               <tr key={item._id}>
                 <td>
                   <img
-                    src={`/products/${item.image}`}
-                    alt={item.name}
+                    src={item.image}
+                    alt={item.prod_name}
                     style={{
                       width: "300px",
                       height: "300px",
@@ -94,7 +94,7 @@ function Wishlist() {
                     }}
                   />
                 </td>
-                <td>{item.name}</td>
+                <td>{item.prod_name}</td>
                 <td>{item.price.toFixed(2)}</td>
                 <td>
                   <button
@@ -107,7 +107,7 @@ function Wishlist() {
                     onClick={() => handleRemoveFromWishlist(item._id)}
                     className="wishlistRemoveFromWishlistBtn"
                   >
-                    Remove From Wishlist
+                    Remove 
                   </button>
                 </td>
               </tr>

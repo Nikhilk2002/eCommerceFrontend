@@ -1,0 +1,60 @@
+/* Wishlist.css */
+
+.wishlist {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .wishlistHeading {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .emptyWishlist {
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+  }
+  
+  .wishTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .wishTable th, .wishTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .wishTable th {
+    background-color: #f2f2f2;
+  }
+  
+  .wishTable td img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+  }
+  
+  .wishlistAddToCartBtn, .wishlistRemoveFromWishlistBtn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  .wishlistAddToCartBtn:hover{
+    background-color: #45a049;
+  }
+  .wishlistRemoveFromWishlistBtn {
+    background-color: red;
+  }
+
+  
+  

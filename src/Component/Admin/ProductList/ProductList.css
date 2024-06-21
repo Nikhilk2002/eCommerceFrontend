@@ -68,7 +68,14 @@
   font-size: 18px;
   margin-top: 20px;
 }
+.icon--edit {
+  color: green;
+}
 
+.icon--delete {
+  color: red; 
+
+}
 @media (max-width: 768px) {
   .product-list-table th,
   .product-list-table td {
