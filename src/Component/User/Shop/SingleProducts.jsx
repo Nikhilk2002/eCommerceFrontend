@@ -13,10 +13,9 @@ function SingleProducts() {
     const fetchProductById = async (productId) => {
       try {
         const response = await getProductDetails(productId);
-        const {status, product, message} = response.data;
-        if(status){
+        const { status, product} = response.data;
+        if (status) {
           setProduct(product);
-
         }
       } catch (err) {
         console.error('Error fetching product:', err);
@@ -31,7 +30,7 @@ function SingleProducts() {
 
   if (loading) {
     return (
-      <Container className="d-flex justify-content-center">
+      <Container className="d-flex justify-content-center my-5">
         <Spinner animation="border" />
       </Container>
     );
@@ -39,7 +38,7 @@ function SingleProducts() {
 
   if (error) {
     return (
-      <Container className="d-flex justify-content-center">
+      <Container className="d-flex justify-content-center my-5">
         <Alert variant="danger">{error}</Alert>
       </Container>
     );
@@ -47,22 +46,29 @@ function SingleProducts() {
 
   if (!product) {
     return (
-      <Container className="d-flex justify-content-center">
+      <Container className="d-flex justify-content-center my-5">
         <Alert variant="danger">Product not found</Alert>
       </Container>
     );
   }
 
   return (
-    <Container>
-      <Row>
-        <Col md={6}>
-          <Card>
-            <Card.Img variant="top" src={product.image} alt={product.prod_name} />
+    <Container className="my-5">
+      <Row className="justify-content-center">
+        <Col md={8} lg={6}>
+          <Card className="shadow-sm">
+            <Card.Img 
+              variant="top" 
+              src={product.image} 
+              alt={product.prod_name} 
+              style={{ maxHeight: '400px', objectFit: 'cover' }}
+            />
             <Card.Body>
-              <Card.Title>{product.prod_name}</Card.Title>
-              <Card.Text>{product.description}</Card.Text>
-              <Card.Text>Price: ₹{product.price}</Card.Text>
+              <Card.Title className="text-center">{product.prod_name}</Card.Title>
+              <Card.Text className="text-muted text-center mb-4">{product.description}</Card.Text>
+              <Card.Text className="text-center">
+                <strong>Price: ₹{product.price}</strong>
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>

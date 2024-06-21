@@ -7,6 +7,8 @@ import UserSignup from '../Pages/User/UserSignup'
 import UserShop from '../Pages/User/UserShop'
 import AdultShop from '../Pages/User/AdultShop'
 import ChildShop from '../Pages/User/ChildShop'
+import CartPage from '../Pages/User/CartPage'
+import WishListPage from '../Pages/User/WishListPage'
 
 function UserRouter() {
   return (
@@ -19,6 +21,8 @@ function UserRouter() {
         <Route path='/shop' element={<UserShop/>}/>
         <Route path='/adult' element={<AdultShop/>}/>
         <Route path='/child' element={<ChildShop/>}/>
+        <Route path='/cart' element={<CartPage/>}/>
+        <Route path='/wishlist' element={<WishListPage/>}/>
 
         </Routes>
 

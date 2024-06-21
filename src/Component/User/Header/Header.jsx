@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import { userStatus } from '../../../Services/UserApi';
+import { FaShoppingCart, FaHeart } from 'react-icons/fa';
 
 function Header() {
   const navigate = useNavigate();
@@ -55,8 +56,8 @@ function Header() {
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav mr-auto">
+            <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul className="navbar-nav">
                 <li className="nav-item">
                   <Link to="/" className="nav-link">Home</Link>
                 </li>
@@ -70,12 +71,20 @@ function Header() {
                   <Link to="/child" className="nav-link">Child</Link>
                 </li>
               </ul>
-              <div className="ml-auto" id='user-sbmt'>
-                {loggedIn ? (
-                  <button onClick={handleLogout} className="btn btn-primary">Logout</button>
-                ) : (
-                  <button onClick={handleLogin} className="btn btn-primary">Login</button>
-                )}
+              <div className="icon-container">
+                <Link to="/wishlist" className="nav-icon">
+                  <FaHeart />
+                </Link>
+                <Link to="/cart" className="nav-icon">
+                  <FaShoppingCart />
+                </Link>
+                <div className='user-login-btn'>
+                  {loggedIn ? (
+                    <button onClick={handleLogout} className="btn btn-primary">Logout</button>
+                  ) : (
+                    <button onClick={handleLogin} className="btn btn-primary">Login</button>
+                  )}
+                </div>
               </div>
             </div>
           </nav>

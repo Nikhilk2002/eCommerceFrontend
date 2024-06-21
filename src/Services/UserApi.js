@@ -53,3 +53,41 @@ export const adultProduct = async () => {
 export const getProductDetails = (productId) => {
   return userInstance.get(`/shop/${productId}`);
 };
+
+
+//ADD Cart
+
+
+export const addToCart = (productId, quantity) => {
+  return userInstance.post("/cart/add", { productId, quantity });
+};
+
+
+export const getCart = () => {
+  return userInstance.get("/cart");
+}
+
+
+
+//Wishlist
+
+
+export const AddToWishlist = (productId) => {
+  return userInstance.post("/wishlist", { productId });
+};
+
+
+export const checkProductInWishlist = (productId) => {
+  return userInstance.get(`/wishlist/check/${productId}`);
+}
+
+
+export const getWishlist = () => {
+  return userInstance.get("/wishlist");
+};
+
+
+
+export const removeFromWishlist = (productId) => {
+  return userInstance.delete(`/wishlist/remove/${productId}`);
+};

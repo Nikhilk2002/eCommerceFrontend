@@ -1,12 +1,10 @@
-.container-fluid.mainHead {
-  background-color: #f8f9fa;
-  padding: 10px 20px;
+.mainHead {
+  background-color: transparent;
   transition: background-color 0.3s;
-  margin-bottom: 0.3rem;
 }
 
-.container-fluid.mainHead.solid {
-  background-color: #343a40;
+.mainHead.solid {
+  background-color: #fff;
 }
 
 .logoContainer {
@@ -15,92 +13,51 @@
 }
 
 .logoImage {
+  width: 50px;
   height: 50px;
   margin-right: 10px;
 }
 
 .logoName {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
+  margin: 0;
 }
 
 .navLinks {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
 }
 
 .navbar-nav {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-.navbar-nav .nav-item .nav-link {
+.nav-link {
+  margin-right: 15px;
+  font-size: 16px;
   color: #333;
-  padding: 10px 20px;
-  font-size: 18px;
 }
 
-.navbar-nav .nav-item .nav-link:hover {
+.nav-link:hover {
   color: #007bff;
 }
 
-.btn {
-  padding: 10px 20px;
-  font-size: 16px;
+.icon-container {
+  display: flex;
+  align-items: center;
+  margin-left: 38rem;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+.nav-icon {
+  font-size: 20px;
+  margin-right: 15px;
+  color: #333;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+.nav-icon:hover {
+  color: #007bff;
 }
 
-.btn-secondary {
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-
-.btn-secondary:hover {
-  background-color: #565e64;
-  border-color: #565e64;
-}
-
-.ml-auto {
-  margin-left: auto;
-}
-
-.navbar-collapse {
-  justify-content: center;
-}
-
-.navbar-toggler {
-  margin-left: auto;
-}
-
-#user-sbmt{
-  align-items: flex-end;
-}
-@media (max-width: 767.98px) {
-  .logoName {
-    display: none;
-  }
-  .navbar-nav {
-    flex-direction: column;
-  }
-  .btn {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  .ml-auto {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
+.user-login-btn .btn {
+  margin-left: 15px;
 }

@@ -26,7 +26,7 @@ function Login() {
       try {
         console.log("On Submit !!!");
         const { data } = await login(values);
-        console.log(data, "Admin Return Data !!!");
+        console.log(data, "USer Return Data !!!");
         if (data.created) {
           localStorage.setItem("jwt", data.token);
           toast.success("Login Success", { position: "top-right" });
