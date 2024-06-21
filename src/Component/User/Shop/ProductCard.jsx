@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Button, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './ProductCard.css';
-import { addToCart } from '../../../Services/UserApi';
+import { addToCart ,editCart,removeFromCart} from '../../../Services/UserApi';
 import { AddToWishlist, checkProductInWishlist } from '../../../Services/UserApi';
 import { toast } from 'react-toastify';
 

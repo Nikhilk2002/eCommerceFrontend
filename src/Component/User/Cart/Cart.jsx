@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { getCart } from "../../../Services/UserApi";
-import Empty from "../Empty/Empty";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
@@ -28,11 +27,6 @@ function Cart() {
     fetchCart();
   }, []);
 
-  if (loading) {
-    return (
-      
-    )
-  }
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -44,7 +38,9 @@ function Cart() {
         <h1>Shopping Cart</h1>
       </div>
       {cartData.length === 0 ? (
-        <Empty message="No Products in Cart" />
+      <div className="emptyCart"> 
+      <p>No product in wishlist</p>
+      </div>
       ) : (
         <table className="cartTable">
           <thead>
@@ -62,11 +58,11 @@ function Cart() {
               <tr key={item.product._id}>
                 <td>
                   <img
-                    src={`http://localhost:8000/public/images/products/${item.product.image}`}
+                    src={item.product.image}
                     alt={item.product.name}
                     style={{
-                      width: "250px",
-                      height: "250px",
+                      width: "120px",
+                      height: "120px",
                       cursor: "pointer",
                     }}
                     onClick={() => {
@@ -74,10 +70,10 @@ function Cart() {
                     }}
                   />
                 </td>
-                <td>{item.product.name}</td>
+                <td>{item.product.prod_name}</td>
                 <td>{item.quantity}</td>
-                <td>{item.product.price.toFixed(2)}</td>
-                <td>{(item.quantity * item.product.price).toFixed(2)}</td>
+                <td>{item.product.price}</td>
+                <td>{(item.quantity * item.product.price)}</td>
                 <td>
                   <button
                   className="cartBuyNowBtn">
@@ -85,7 +81,7 @@ function Cart() {
                   </button>
                   <button
                   className="cartRemoveBtn">
-                    Remove from Cart
+                    Remove 
                   </button>
                 </td>
               </tr>
