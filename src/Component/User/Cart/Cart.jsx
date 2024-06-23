@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { getCart } from "../../../Services/UserApi";
 import { useNavigate } from "react-router-dom";
+import Empty from "../Empty/Empty";
 
 function Cart() {
   const [cartData, setCartData] = useState([]);
@@ -13,7 +14,12 @@ function Cart() {
   const fetchCart = async () => {
     try {
       const response = await getCart();
-      setCartData(response.data);
+      if (Array.isArray(response.data)) {
+        setCartData(response.data);
+      } else {
+        setCartData([]);
+        setError("Unexpected data format");
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -27,7 +33,6 @@ function Cart() {
     fetchCart();
   }, []);
 
-
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -37,57 +42,59 @@ function Cart() {
       <div className="cartHeading">
         <h1>Shopping Cart</h1>
       </div>
-      {cartData.length === 0 ? (
-      <div className="emptyCart"> 
-      <p>No product in wishlist</p>
-      </div>
+      {loading ? (
+        <div>Loading...</div>
       ) : (
-        <table className="cartTable">
-          <thead>
-            <tr>
-              <th>Product Image</th>
-              <th>Product Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Total Price</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cartData.map((item) => (
-              <tr key={item.product._id}>
-                <td>
-                  <img
-                    src={item.product.image}
-                    alt={item.product.name}
-                    style={{
-                      width: "120px",
-                      height: "120px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => {
-                      navigate(`/product/${item.product._id}`);
-                    }}
-                  />
-                </td>
-                <td>{item.product.prod_name}</td>
-                <td>{item.quantity}</td>
-                <td>{item.product.price}</td>
-                <td>{(item.quantity * item.product.price)}</td>
-                <td>
-                  <button
-                  className="cartBuyNowBtn">
-                    Buy Now
-                  </button>
-                  <button
-                  className="cartRemoveBtn">
-                    Remove 
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <>
+          {cartData.length === 0 ? (
+            <Empty message="No Products in Cart" />
+          ) : (
+            <table className="cartTable">
+              <thead>
+                <tr>
+                  <th>Product Image</th>
+                  <th>Product Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Total Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartData.map((item) => (
+                  <tr key={item.product._id}>
+                    <td>
+                      <img
+                        src={item.product.image}
+                        alt={item.product.name}
+                        style={{
+                          width: "120px",
+                          height: "120px",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => {
+                          navigate(`/product/${item.product._id}`);
+                        }}
+                      />
+                    </td>
+                    <td>{item.product.prod_name}</td>
+                    <td>{item.quantity}</td>
+                    <td>{item.product.price}</td>
+                    <td>{item.quantity * item.product.price}</td>
+                    <td>
+                      <button className="cartBuyNowBtn">
+                        Buy Now
+                      </button>
+                      <button className="cartRemoveBtn">
+                        Remove 
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </>
       )}
     </div>
   );

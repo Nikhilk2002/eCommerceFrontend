@@ -105,8 +105,7 @@ function Wishlist() {
                   </button>
                   <button
                     onClick={() => handleRemoveFromWishlist(item._id)}
-                    className="wishlistRemoveFromWishlistBtn"
-                  >
+                    className="wishlistRemoveFromWishlistBtn">
                     Remove 
                   </button>
                 </td>

@@ -79,7 +79,7 @@ function ProductCard({ product }) {
           <div className="button-group">
             <Button variant="primary" onClick={handleAddToCart}>Add Cart</Button>
             <Button variant="secondary" onClick={handleAddToWishlist}>
-              {inWishlist ? 'Remove from Wishlist' : 'Wishlist'}
+              {inWishlist ? 'Remove' : 'Wishlist'}
             </Button>
           </div>
         </Card.Body>
