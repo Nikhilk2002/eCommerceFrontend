@@ -37,8 +37,13 @@ function Wishlist() {
 
   const handleAddToCart = async (productId) => {
     try {
-      await addToCart(productId);
-      toast.success("Product added to cart");
+      console.log(`Adding product ${productId} to cart`);
+      const response = await addToCart(productId);
+      if (response.status === 200) {
+        toast.success("Product added to cart");
+      } else {
+        toast.error("Failed to add product to cart");
+      }
     } catch (error) {
       console.error("Failed to add product to cart", error);
       toast.error("Failed to add product to cart");
@@ -105,7 +110,8 @@ function Wishlist() {
                   </button>
                   <button
                     onClick={() => handleRemoveFromWishlist(item._id)}
-                    className="wishlistRemoveFromWishlistBtn">
+                    className="wishlistRemoveFromWishlistBtn"
+                  >
                     Remove 
                   </button>
                 </td>

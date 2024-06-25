@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
-import { getCart } from "../../../Services/UserApi";
+import { getCart, removeFromCart, editCart } from "../../../Services/UserApi";
 import { useNavigate } from "react-router-dom";
 import Empty from "../Empty/Empty";
 
@@ -26,6 +26,28 @@ function Cart() {
       setTimeout(() => {
         setLoading(false);
       }, 1000);
+    }
+  };
+
+  const handleRemove = async (productId) => {
+    try {
+      await removeFromCart(productId);
+      setCartData(cartData.filter(item => item.product._id !== productId));
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleEditQuantity = async (productId, quantity) => {
+    if (quantity <= 0) {
+      alert("Quantity must be at least 1");
+      return;
+    }
+    try {
+      await editCart(productId, quantity);
+      setCartData(cartData.map(item => item.product._id === productId ? { ...item, quantity } : item));
+    } catch (err) {
+      setError(err.message);
     }
   };
 
@@ -78,15 +100,25 @@ function Cart() {
                       />
                     </td>
                     <td>{item.product.prod_name}</td>
-                    <td>{item.quantity}</td>
+                    <td>
+                      <input
+                        type="number"
+                        value={item.quantity}
+                        min="1"
+                        onChange={(e) =>
+                          handleEditQuantity(item.product._id, parseInt(e.target.value))
+                        }
+                      />
+                    </td>
                     <td>{item.product.price}</td>
                     <td>{item.quantity * item.product.price}</td>
                     <td>
-                      <button className="cartBuyNowBtn">
-                        Buy Now
-                      </button>
-                      <button className="cartRemoveBtn">
-                        Remove 
+                      <button className="cartBuyNowBtn">Buy Now</button>
+                      <button
+                        className="cartRemoveBtn"
+                        onClick={() => handleRemove(item.product._id)}
+                      >
+                        Remove
                       </button>
                     </td>
                   </tr>
