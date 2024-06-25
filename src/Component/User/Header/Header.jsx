@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import { userStatus } from '../../../Services/UserApi';
-import { FaShoppingCart, FaHeart } from 'react-icons/fa';
+import { FaCartArrowDown , FaHeart } from 'react-icons/fa';
 
 function Header() {
   const navigate = useNavigate();
@@ -76,7 +76,7 @@ function Header() {
                   <FaHeart />
                 </Link>
                 <Link to="/cart" className="nav-icon">
-                  <FaShoppingCart />
+                  <FaCartArrowDown/>
                 </Link>
                 <div className='user-login-btn'>
                   {loggedIn ? (

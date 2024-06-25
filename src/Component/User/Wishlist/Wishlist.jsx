@@ -23,6 +23,7 @@ function Wishlist() {
         setError("Failed to fetch wishlist");
       }
     } catch (error) {
+      console.error("Error fetching wishlist:", error);
       setError("Failed to fetch wishlist");
     } finally {
       setTimeout(() => {
@@ -37,13 +38,9 @@ function Wishlist() {
 
   const handleAddToCart = async (productId) => {
     try {
-      console.log(`Adding product ${productId} to cart`);
-      const response = await addToCart(productId);
-      if (response.status === 200) {
-        toast.success("Product added to cart");
-      } else {
-        toast.error("Failed to add product to cart");
-      }
+      await addToCart(productId);
+      toast.success("Product added to cart");
+      
     } catch (error) {
       console.error("Failed to add product to cart", error);
       toast.error("Failed to add product to cart");
@@ -68,7 +65,9 @@ function Wishlist() {
       <div className="wishlistHeading">
         <h1>My Wishlist</h1>
       </div>
-      {wishlistData.length === 0 ? (
+      {loading ? (
+        <div>Loading...</div>
+      ) : wishlistData.length === 0 ? (
         <div className="emptyWishlist">
           <p>No Product in Wishlist</p>
         </div>
@@ -90,8 +89,8 @@ function Wishlist() {
                     src={item.image}
                     alt={item.prod_name}
                     style={{
-                      width: "300px",
-                      height: "300px",
+                      width: "100px",
+                      height: "100px",
                       cursor: "pointer",
                     }}
                     onClick={() => {
@@ -106,13 +105,13 @@ function Wishlist() {
                     onClick={() => handleAddToCart(item._id)}
                     className="wishlistAddToCartBtn"
                   >
-                    Add to Cart
+                    Add Cart
                   </button>
                   <button
                     onClick={() => handleRemoveFromWishlist(item._id)}
                     className="wishlistRemoveFromWishlistBtn"
                   >
-                    Remove 
+                    Remove
                   </button>
                 </td>
               </tr>
